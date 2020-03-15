@@ -6,7 +6,7 @@ Copyright 2013 Tony DiCola
 Functions to help with the detection and cropping of faces.
 """
 import cv2
-import config
+from . import config
 
 haar_faces = cv2.CascadeClassifier(config.HAAR_FACES)
 haar_eyes = cv2.CascadeClassifier(config.HAAR_EYES)
@@ -88,8 +88,8 @@ def crop(image, x, y, w, h):
     """
     crop_height = int((config.FACE_HEIGHT / float(config.FACE_WIDTH)) * w)
     midy = y + h / 2
-    y1 = max(0, midy - crop_height / 2)
-    y2 = min(image.shape[0] - 1, midy + crop_height / 2)
+    y1 = int(max(0, midy - crop_height / 2))
+    y2 = int(min(image.shape[0] - 1, midy + crop_height / 2))
     return image[y1:y2, x:x + w]
 
 

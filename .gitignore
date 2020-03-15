@@ -2,3 +2,5 @@ DS_Store
 *.pyc
 training.xml
 *~
+face.jpg
+training_data/

@@ -12,7 +12,7 @@ import os
 import platform
 import cv2
 
-(CV_MAJOR_VER, CV_MINOR_VER, mv1, mv2) = cv2.__version__.split(".")
+(CV_MAJOR_VER, CV_MINOR_VER, mv1) = cv2.__version__.split(".")
 
 _platform = platform.system().lower()
 path_to_file = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
@@ -131,11 +131,11 @@ def model(algorithm, thresh):
             os._exit(1)
     else:
         if algorithm == 1:
-            model = cv2.createLBPHFaceRecognizer(threshold=thresh)
+            model = cv2.face.createLBPHFaceRecognizer(threshold=thresh)
         elif algorithm == 2:
-            model = cv2.createFisherFaceRecognizer(threshold=thresh)
+            model = cv2.face.createFisherFaceRecognizer(threshold=thresh)
         elif algorithm == 3:
-            model = cv2.createEigenFaceRecognizer(threshold=thresh)
+            model = cv2.face.createEigenFaceRecognizer(threshold=thresh)
         else:
             print("WARNING: face algorithm must be in the range 1-3")
             os._exit(1)
